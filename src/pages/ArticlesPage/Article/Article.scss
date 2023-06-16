@@ -1,0 +1,32 @@
+@import '../../../style-constants.scss';
+
+.article {
+    box-shadow: $card-box-shadow;
+    border-radius: $standard-border-radius;
+    padding: $padding-desktop;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: $white;
+    color: $font-color-dark;
+
+    &:first-child {
+        background-color: $article-color-blue;
+    }
+
+    &:nth-child(2) {
+        background-color: $article-color-purple;
+    }
+
+    &:nth-child(3) {
+        background-color: $article-color-green;
+    }
+
+    &:nth-child(5) {
+        background-color: $article-color-orange;
+    }
+
+    &:nth-child(6) {
+        background-color: $article-color-pink;
+    }
+}

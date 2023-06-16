@@ -1,0 +1,30 @@
+@import '../../../style-constants.scss';
+@import '../../../mixins/breakpoint-mixin.scss';
+
+.content {
+    background-color: $background-color-gray;
+    padding: 64px 20px;
+
+    &__container {
+        margin: 0 auto;
+        width: 90%;
+        display: grid;
+        gap: 2rem;
+        grid-auto-flow: column;
+        grid-auto-columns: 1fr; //for equal columns
+
+        @include mobile {
+            grid-auto-flow: row; //default
+        }
+    }
+
+    &__article {
+        > h2 {
+            margin-bottom: 1rem;
+        }
+
+        @include mobile {
+            text-align: center;
+        }
+    }
+}

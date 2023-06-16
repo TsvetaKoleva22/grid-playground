@@ -1,0 +1,15 @@
+@import '../../style-constants.scss';
+
+.sidebar {
+    background-color: $background-color-blue;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 64px 20px;
+    height: 100%;
+
+    &__item {
+        font-size: 20px;
+        color: $font-color-dark;
+    }
+}

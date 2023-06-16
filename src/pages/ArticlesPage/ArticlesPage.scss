@@ -1,0 +1,138 @@
+@import '../../style-constants.scss';
+@import '../../mixins/breakpoint-mixin.scss';
+
+//articles container styling - with lines
+.articles-page {
+    &__articles {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    &__article {
+        &--1,
+        &--4 {
+            grid-column: span 2;
+        }
+
+        &--5 {
+            grid-column-start: 4;
+            grid-row: 1 / span 2;
+        }
+
+        &--6 {
+            grid-column: span 4;
+        }
+    }
+
+    @include tablet { //under 1024px - two columns
+        &__articles {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        &__article {
+            grid-row: auto;
+            grid-column: auto;
+        }
+
+    }
+
+    @include mobile { //under 767px - only one column
+        grid-template-rows: auto 1fr auto;
+
+        &__articles {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+//articles container styling - with AREAS
+// .articles-page {
+//     &__articles {
+//         display: grid;
+//         gap: 20px;
+//         grid-auto-columns: 1fr; //instead of grid-template-columns: repeat(4, 1fr); - no need to modify this in media queries
+//         grid-template-areas:
+//             "first first second fifth"
+//             "third fourth fourth fifth"
+//             "sixth sixth sixth sixth";
+//     }
+
+//     &__article {
+//         &--1 {
+//             grid-area: first;
+//         }
+
+//         &--2 {
+//             grid-area: second;
+//         }
+
+//         &--3 {
+//             grid-area: third;
+//         }
+
+//         &--4 {
+//             grid-area: fourth;
+//         }
+
+//         &--5 {
+//             grid-area: fifth;
+//         }
+
+//         &--6 {
+//             grid-area: sixth;
+//         }
+//     }
+
+//     @include tablet { //under 1024px - two columns but first and fourth article span 2 cols
+//         &__articles {
+//             grid-template-areas:
+//                 "first first"
+//                 "second third"
+//                 "fourth fourth"
+//                 "fifth sixth";
+//         }
+//     }
+
+//     @include mobile { //under 767px - only one column
+//         &__articles {
+//             grid-template-areas:
+//                 "first"
+//                 "second"
+//                 "third"
+//                 "fourth"
+//                 "fifth"
+//                 "sixth";
+//         }
+//     }
+// }
+
+
+//general styling of the page
+.articles-page {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 80px 1fr 4rem;
+
+    grid-template-areas:
+        "header"
+        "content"
+        "footer";
+
+    &__header {
+        grid-area: header;
+    }
+
+    &__content {
+        grid-area: content;
+        padding: $padding-desktop;
+    }
+
+    &__footer {
+        grid-area: footer;
+    }
+
+    @include mobile { //under 767px - only one column
+        grid-template-rows: auto 1fr auto;
+    }
+}

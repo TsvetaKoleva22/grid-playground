@@ -1,0 +1,90 @@
+@import '../../style-constants.scss';
+@import '../../mixins/breakpoint-mixin.scss';
+
+.cards-page {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 80px 1fr 4rem;
+    grid-template-columns: 5% 90% 5%;
+    grid-template-areas:
+        "header header header"
+        ". content ."
+        "footer footer footer";
+
+    &__header {
+        grid-area: header;
+    }
+
+    &__content {
+        grid-area: content;
+        padding-top: 32px;
+        padding-bottom: 32px;
+
+        h1 {
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__footer {
+        grid-area: footer;
+    }
+
+    &__cards {
+        background-color: $white;
+        padding: $padding-desktop;
+        border-radius: $standard-border-radius;
+        overflow-x: auto;
+
+        //step 1
+        display: grid;
+        grid-gap: 2rem;
+
+        //step 2
+        // grid-auto-flow: row; //default
+        // OR
+        // grid-auto-flow: column;
+
+        // //step 3 - configure
+        // grid-auto-rows: 250px;
+        // grid-auto-columns: 800px 500px;
+
+        //step 4 -auto-fill and auto-fit
+        // for better testing LEAVE ONLY two articles => slice(0, 2)
+        // grid-template-columns: repeat(auto-fill, 400px); //adds as many columns as possible, even empty ones
+
+        // grid-template-columns: repeat(auto-fit, 400px); //not adding empty columns, just the necessary for the available children
+
+
+        // show ALL cards
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+
+    @include mobile {
+        grid-template-rows: auto 1fr auto;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "content"
+            "footer";
+
+        &__content {
+            padding: 0;
+
+            h1 {
+                padding: 0.5rem 0.5rem 0 0.5rem;
+            }
+        }
+
+        &__cards {
+            border-radius: 0;
+        }
+    }
+
+    @include small-mobile {
+        &__cards {
+            padding: $padding-mobile;
+            grid-gap: 0.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+    }
+}

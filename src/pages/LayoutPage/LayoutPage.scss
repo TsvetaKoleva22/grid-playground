@@ -1,0 +1,107 @@
+@import '../../style-constants.scss';
+@import '../../mixins/breakpoint-mixin.scss';
+
+.layout-page {
+    min-height: 100vh;
+    background-color: $white;
+
+    display: grid;
+    grid-template-rows: 80px 1fr 4rem;
+    grid-template-columns: minmax(10rem, 15%) 3rem 1fr;
+
+    &__header {
+        grid-column: 1 / -1;
+    }
+
+    &__sidebar {
+        grid-column: 1 / 2;
+    }
+
+    &__content {
+        grid-column: 3 / -1;
+    }
+
+    &__footer {
+        grid-column: 1 / span 3; //the same as 1 / -1, but will need to change twice for tablet and mobile
+    }
+
+    @include tablet { //under 1024px - remove empty space
+        grid-template-columns: minmax(10rem, 15%) 1fr;
+
+        &__content {
+            grid-column-start: 2;
+        }
+
+        &__footer {
+            grid-column: 1 / span 2;
+        }
+    }
+
+    @include mobile { //under 767px - remove sidebar, only one column
+        grid-template-rows: auto 1fr auto;
+        grid-template-columns: 1fr;
+
+        &__sidebar {
+            display: none;
+        }
+
+        &__content {
+            grid-column-start: 1;
+        }
+
+        &__footer {
+            grid-column: 1 / span 1;
+        }
+    }
+}
+
+//layout styling with AREAS
+// .layout-page {
+//     min-height: 100vh;
+//     background-color: $white;
+//     display: grid;
+//     grid-template-rows: 80px 1fr 4rem;
+//     grid-template-columns: minmax(10rem, 15%) 3rem 1fr;
+
+//     grid-template-areas:
+//         "header  header header"
+//         "sidebar .      content"
+//         "footer  footer footer";
+
+//     //children - set their grid area and forget them - the layout is controlled only by the parent
+//     &__header {
+//         grid-area: header;
+//     }
+
+//     &__sidebar {
+//         grid-area: sidebar;
+//     }
+
+//     &__content {
+//         grid-area: content;
+//     }
+
+//     &__footer {
+//         grid-area: footer;
+//     }
+
+//     @include tablet { //under 1024px - remove empty space
+//         grid-template-areas:
+//             "header header header"
+//             "sidebar sidebar content"
+//             "footer footer footer";
+//     }
+
+//     @include mobile { //under 767px - remove sidebar, only one column
+//         grid-template-rows: auto 1fr auto;
+//         grid-template-columns: 1fr;
+//         grid-template-areas:
+//             "header"
+//             "content"
+//             "footer";
+
+//         &__sidebar {
+//             display: none;
+//         }
+//     }
+// }
