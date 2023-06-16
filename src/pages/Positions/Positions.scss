@@ -13,7 +13,8 @@
     //NOTE: this page is NOT responsive; it is just a playground for justify and align properties
     &__container {
         width: 80%;
-        height: 500px;
+        height: 70%;
+        min-height: 380px;
         margin: 20px auto;
         background-color: $background-color-gray;
         display: grid;
