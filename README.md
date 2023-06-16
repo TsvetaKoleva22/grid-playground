@@ -19,6 +19,8 @@ The Cards pages uses grid on different levels - for the layout of the entire pag
 
 The Positions page provides a playground for testing the justify and align grid properties of the container and of the grid items. This page is not responsive.
 
+[Here](https://css-tricks.com/snippets/css/complete-guide-grid/) is detailed information about CSS grid and all its properties.
+
 ## Available Scripts
 
 In the project directory, you can run:
